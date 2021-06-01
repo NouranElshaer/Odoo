@@ -68,11 +68,21 @@ class HmsPatient(models.Model):
     address = fields.Text()
     age = fields.Integer()
 
-    # @api.onchange('pcr')
+    # @api.onchange('age')
+    # @api.constrains('age')
+    # @api.depends('age')
     # def on_change(self):
-    #     self.cr_ratio = self.value / 3
-    #     # if self.is_opend:
-    #          raise ValidationError('value 2 must be less than 200')
-
+    #     for record in self:
+    #         if record.age < 30:
+    #             record.pcr = True
+            # # if self.is_opend:
+            #      raise ValidationError('value 2 must be less than 200')
+    @api.onchange('age')
+    def on_change(self):
+        if self.age < 30:
+            self.pcr = True
+            # raise ValidationError('PCR is Ckecked')
+        else:
+            self.pcr = False
 
 

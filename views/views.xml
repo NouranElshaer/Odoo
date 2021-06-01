@@ -39,10 +39,12 @@
                             <field name="department_id"/>
                             <field name="age"/>
                             <field name="date_of_birth"/>
-                            <field name="history"/>
+                            <field name="history" attrs="{'invisible': [('age','&lt;',50)]}"/>
+<!--                            <field name="history" attrs="{'invisible':[('age','<','50')]}"/>-->
                             <field name="cr_ratio"  attrs="{'required': [('pcr','!=', False)]}"/>
                             <field name="blood_type"/>
                             <field name="pcr"/>
+<!--                            <field name="pcr" attrs="{'default': [('age','&lt;',30)]}"/>-->
                             <field name="address"/>
                         </group>
 
