@@ -23,11 +23,11 @@ class HmsDepartment(models.Model):
     #     if self.is_opend:
     #         raise ValidationError('value 2 must be less than 200')
 
-    @api.onchange('is_opend')
-    def on_change(self):
-        # self.float = self.value / 3
-        # if self.is_opend:
-             raise ValidationError('value 2 must be less than 200')
+    # @api.onchange('is_opend')
+    # def on_change(self):
+    #     # self.float = self.value / 3
+    #     # if self.is_opend:
+    #          raise ValidationError('value 2 must be less than 200')
 
     # @api.depends('value')
     # def _value_pc(self):
@@ -50,11 +50,11 @@ class HmsPatient(models.Model):
     _rec_name = 'fname'
 
     department_id = fields.Many2one('hms.department', 'Department Name')
-    dep_capacity = hms.department.capacity
+
 
 #
-    fname = fields.Char(string='First Name',  default='Ahmed')
-    lname = fields.Char(string='Last Name')
+    fname = fields.Char(string='First Name',  default='Ahmed', required=True)
+    lname = fields.Char(string='Last Name', required=True)
     date_of_birth = fields.Date()
     history = fields.Html()
     cr_ratio = fields.Float()
