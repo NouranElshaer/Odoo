@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.odoo.exceptions import ValidationError
 
 
@@ -68,20 +68,15 @@ class HmsPatient(models.Model):
     address = fields.Text()
     age = fields.Integer()
 
-    # @api.onchange('age')
-    # @api.constrains('age')
-    # @api.depends('age')
-    # def on_change(self):
-    #     for record in self:
-    #         if record.age < 30:
-    #             record.pcr = True
-            # # if self.is_opend:
-            #      raise ValidationError('value 2 must be less than 200')
+    @api.constrains('pcr')
+    def _check_age(self):
+        raise ValidationError('PCR is Checked')
+
     @api.onchange('age')
     def on_change(self):
         if self.age < 30:
             self.pcr = True
-            # raise ValidationError('PCR is Ckecked')
+            # raise ValidationError(_('PCR is Ckecked'))
         else:
             self.pcr = False
 
