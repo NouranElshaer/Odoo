@@ -40,7 +40,7 @@
                             <field name="age"/>
                             <field name="date_of_birth"/>
                             <field name="history"/>
-                            <field name="cr_ratio"/>
+                            <field name="cr_ratio"  attrs="{'required': [('pcr','!=', False)]}"/>
                             <field name="blood_type"/>
                             <field name="pcr"/>
                             <field name="address"/>

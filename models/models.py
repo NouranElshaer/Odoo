@@ -68,6 +68,11 @@ class HmsPatient(models.Model):
     address = fields.Text()
     age = fields.Integer()
 
+    # @api.onchange('pcr')
+    # def on_change(self):
+    #     self.cr_ratio = self.value / 3
+    #     # if self.is_opend:
+    #          raise ValidationError('value 2 must be less than 200')
 
 
 
